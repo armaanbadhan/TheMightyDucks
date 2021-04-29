@@ -7,17 +7,22 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidBody;
 
     [SerializeField]
-    private float _velocity = 25;
+    private float _velocity = 10;
+
+    public bool isRunning = false;
 
     void Start()
     {
-        _rigidBody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        isRunning = false;
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody.gravityScale = 0;
+        transform.position = new Vector3(0, 0, 0);
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isRunning)
         {
             _rigidBody.velocity = new Vector2(0, _velocity);
         }

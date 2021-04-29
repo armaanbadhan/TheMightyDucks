@@ -8,19 +8,24 @@ public class GameManager : MonoBehaviour
     private Player _player;
     private Rigidbody2D _rigidBodyPlayer;
 
+    public bool isRunning = false;
+
+    [SerializeField]
+    private SpawnManager _mySpawnManager;
+
     void Start()
     {
         _rigidBodyPlayer = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-        _rigidBodyPlayer.gravityScale = 0;
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !_player.isRunning)
+        if (Input.GetKeyDown(KeyCode.Space) && !isRunning)
         {
-            _player.isRunning = true;
+            isRunning = true;
             _rigidBodyPlayer.gravityScale = 2.75f;
+            _mySpawnManager.StartSpawning();
         }
     }
 }

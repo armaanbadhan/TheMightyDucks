@@ -9,20 +9,20 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _velocity = 10;
 
-    public bool isRunning = false;
+    [SerializeField]
+    private GameManager myGameManager;
 
     void Start()
     {
-        isRunning = false;
+        myGameManager.isRunning = false;
         _rigidBody = GetComponent<Rigidbody2D>();
-        _rigidBody.gravityScale = 0;
         transform.position = new Vector3(0, 0, 0);
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isRunning)
+        if (Input.GetKeyDown(KeyCode.Space) && myGameManager.isRunning)
         {
             _rigidBody.velocity = new Vector2(0, _velocity);
         }
@@ -30,5 +30,10 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(0, 0, 0);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision);
     }
 }

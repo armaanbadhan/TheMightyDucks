@@ -7,14 +7,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _pipes;
 
-    void Start()
+    [SerializeField]
+    private GameManager _myGameManager;
+
+    public void StartSpawning()
     {
         StartCoroutine(EnemySpawnRoutine());
     }
 
     IEnumerator EnemySpawnRoutine()
     {
-        while (true)
+        while (_myGameManager.isRunning)
         {
             float randomY = Random.Range(-2.5f, 0.5f);
             Instantiate(_pipes, new Vector3(6.25f, randomY, 0), Quaternion.identity);

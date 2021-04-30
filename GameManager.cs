@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         _player.lives = 3;
         _UIManager.HideScore();
         _UIManager.ResetScore();
+        _UIManager.UpdateLivesImage(3);
         DestroyPipesOnNewGame();
     }
 

@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
             Destroy(other.transform.parent.gameObject);
             lives -= 1;
 
+            _myUIManager.UpdateLivesImage(lives);
+
             if (lives == 0)
             {
                 this.gameObject.SetActive(false);

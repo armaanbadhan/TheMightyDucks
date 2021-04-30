@@ -7,15 +7,22 @@ public class PipeManager : MonoBehaviour
     [SerializeField]
     private float _speed = 7.5f;
 
-    void Start()
+    [SerializeField]
+    private GameManager _myGameManager;
+
+    private void Start()
     {
-        
+        _myGameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
 
     void Update()
     {
-        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        if (_myGameManager.isRunning)
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        }
+
 
         if (transform.position.x < -15.0f)
         {

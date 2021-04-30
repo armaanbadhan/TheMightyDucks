@@ -7,21 +7,30 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _pipes;
 
+    public float canSpawn = 0.0f;
+    private float _spawnRate = 1.0f;
+
+
     [SerializeField]
     private GameManager _myGameManager;
 
-    public void StartSpawning()
+    private void Update()
     {
-        StartCoroutine(EnemySpawnRoutine());
-    }
-
-    IEnumerator EnemySpawnRoutine()
-    {
-        while (_myGameManager.isRunning)
+        if (_myGameManager.isRunning && canSpawn < Time.time)
         {
             float randomY = Random.Range(-2.5f, 0.5f);
             Instantiate(_pipes, new Vector3(6.25f, randomY, 0), Quaternion.identity);
-            yield return new WaitForSeconds(1.5f);
+            canSpawn = Time.time + _spawnRate;
         }
     }
+
+    //IEnumerator EnemySpawnRoutine()
+    //{
+    //    while (_myGameManager.isRunning)
+    //    {
+    //        float randomY = Random.Range(-2.5f, 0.5f);
+    //        Instantiate(_pipes, new Vector3(6.25f, randomY, 0), Quaternion.identity);
+    //        yield return new WaitForSeconds(1.5f);
+    //    }
+    //}
 }

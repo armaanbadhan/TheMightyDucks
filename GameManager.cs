@@ -10,12 +10,17 @@ public class GameManager : MonoBehaviour
 
     public bool isRunning = false;
 
+
     [SerializeField]
     private SpawnManager _mySpawnManager;
+
+    [SerializeField]
+    private UIManager _UIManager;
 
     void Start()
     {
         _rigidBodyPlayer = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        _rigidBodyPlayer.gravityScale = 0;
     }
 
 
@@ -23,9 +28,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isRunning)
         {
+            _player.gameObject.SetActive(true);
             isRunning = true;
-            _rigidBodyPlayer.gravityScale = 2.75f;
-            _mySpawnManager.StartSpawning();
+            _UIManager.HideInstructions();
+            if (_rigidBodyPlayer != null)
+            {
+                _rigidBodyPlayer.gravityScale = 2.75f;
+            }
+            _mySpawnManager.canSpawn = Time.time + 1.0f;
         }
     }
 }

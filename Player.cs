@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
             if (lives == 0)
             {
                 this.gameObject.SetActive(false);
+                myGameManager.GameOver();
             }
         }
         else if (other.tag is "PipesPair")

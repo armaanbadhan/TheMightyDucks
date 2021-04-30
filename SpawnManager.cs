@@ -10,7 +10,6 @@ public class SpawnManager : MonoBehaviour
     public float canSpawn = 0.0f;
     private readonly float _spawnRate = 1.0f;
 
-
     [SerializeField]
     private GameManager _myGameManager;
 

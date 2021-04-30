@@ -8,18 +8,37 @@ public class UIManager : MonoBehaviour
     public Text ScoreText;
 
     [SerializeField]
+    private Text _displayScore;
+
+    [SerializeField]
     private GameObject _instructions;
 
-    public int score = 0;
+    private int _score = 0;
 
     public void UpdateScore()
     {
-        score += 10;
-        ScoreText.text =  score + "";
+        _score += 10;
+        ScoreText.text =  _score + "";
+    }
+
+    public void ResetScore()
+    {
+        _score = 0;
+        ScoreText.text = _score + "";
     }
 
     public void HideInstructions()
     {
         _instructions.SetActive(false);
+    }
+
+    public void DisplayScore()
+    {
+        _displayScore.text = "SCORE: " + _score;
+    }
+
+    public void HideScore()
+    {
+        _displayScore.text = "";
     }
 }

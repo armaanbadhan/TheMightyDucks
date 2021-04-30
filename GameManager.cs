@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isRunning)
         {
             _player.gameObject.SetActive(true);
+            _player.lives = 3;
             isRunning = true;
             _UIManager.HideInstructions();
             if (_rigidBodyPlayer != null)

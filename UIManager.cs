@@ -18,12 +18,6 @@ public class UIManager : MonoBehaviour
         ScoreText.text =  score + "";
     }
 
-
-    void Update()
-    {
-        
-    }
-
     public void HideInstructions()
     {
         _instructions.SetActive(false);

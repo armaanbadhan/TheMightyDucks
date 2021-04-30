@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject _pipes;
 
     public float canSpawn = 0.0f;
-    private float _spawnRate = 1.0f;
+    private readonly float _spawnRate = 1.0f;
 
 
     [SerializeField]
@@ -23,14 +23,4 @@ public class SpawnManager : MonoBehaviour
             canSpawn = Time.time + _spawnRate;
         }
     }
-
-    //IEnumerator EnemySpawnRoutine()
-    //{
-    //    while (_myGameManager.isRunning)
-    //    {
-    //        float randomY = Random.Range(-2.5f, 0.5f);
-    //        Instantiate(_pipes, new Vector3(6.25f, randomY, 0), Quaternion.identity);
-    //        yield return new WaitForSeconds(1.5f);
-    //    }
-    //}
 }

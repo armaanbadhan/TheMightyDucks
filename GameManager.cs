@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         {
             _player.gameObject.SetActive(true);
             isRunning = true;
-            _UIManager.HideInstructions();
 
             if (gameOver)
             {

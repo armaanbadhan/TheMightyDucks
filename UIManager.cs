@@ -11,9 +11,6 @@ public class UIManager : MonoBehaviour
     private Text _displayScore;
 
     [SerializeField]
-    private GameObject _instructions;
-
-    [SerializeField]
     private Sprite[] _livesSprite;
 
     [SerializeField]
@@ -36,11 +33,6 @@ public class UIManager : MonoBehaviour
     {
         _score = 0;
         ScoreText.text = _score + "";
-    }
-
-    public void HideInstructions()
-    {
-        _instructions.SetActive(false);
     }
 
     public void DisplayScore()
